@@ -37,7 +37,7 @@ public class Endereco implements Serializable {
 	@Column(name="cod_cliente")
 	private Integer endereco;
 	
-	@OneToOne(mappedBy = "enderco")
+	@OneToOne(mappedBy = "endereco")
 	private Cliente cliente;
 	
 	private String rua;

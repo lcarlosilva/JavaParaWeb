@@ -27,7 +27,7 @@ public class Locacao implements Serializable {
 	private Integer locacao;
 	
 	@ManyToOne
-	@JoinColumn
+	@JoinColumn(name="cod_cliente")
 	private Cliente cliente;
 	
 	@ManyToOne

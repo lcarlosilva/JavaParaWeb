@@ -80,7 +80,7 @@ public class ClienteDAO {
 	}
 	
 	//BUSCAR CATEGORIAS
-	public Cliente buscaCategoria(Integer codigo) {
+	public Cliente buscaCliente(Integer codigo) {
 		
 		Cliente cliente = null;
 		

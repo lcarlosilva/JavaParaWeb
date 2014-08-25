@@ -79,7 +79,7 @@ public class EnderecoDAO {
 	}
 	
 	//BUSCAR CATEGORIAS
-	public Endereco buscaCategoria(Integer codigo) {
+	public Endereco buscaEndereco(Integer codigo) {
 		
 		Endereco endereco = null;
 		

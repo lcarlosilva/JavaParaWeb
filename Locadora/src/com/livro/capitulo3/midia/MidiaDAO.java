@@ -80,7 +80,7 @@ public class MidiaDAO {
 	}
 	
 	//BUSCAR CATEGORIAS
-	public Midia buscaCategoria(Integer codigo) {
+	public Midia buscaMidia(Integer codigo) {
 		
 		Midia midia = null;
 		
@@ -136,5 +136,5 @@ public class MidiaDAO {
 		
 		return midias;
 	}
-	
+
 }
