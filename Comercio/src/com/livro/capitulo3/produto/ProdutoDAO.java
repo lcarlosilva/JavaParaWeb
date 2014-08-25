@@ -1,4 +1,4 @@
-package com.livro.capitulo3.categoria;
+package com.livro.capitulo3.produto;
 
 import java.util.List;
 
@@ -8,23 +8,24 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 
+import com.livro.capitulo3.produto.Produto;
 import com.livro.capitulo3.util.HibernateUtil;
 
-public class CategoriaDAO {
-	
+public class ProdutoDAO {
+
 	private Session sessao;
 	private Transaction transacao;
 	
 	//SALVAR
-	public void salvar(Categoria categoria){
+	public void salvar(Produto produto){
 		try {
 			this.sessao = HibernateUtil.getSessionfactory().getCurrentSession();
 			this.transacao = this.sessao.beginTransaction();
-			this.sessao.save(categoria);
+			this.sessao.save(produto);
 			this.transacao.commit();
 			System.out.println("Transação de salvar, concluida com sucesso.");
 		} catch (HibernateException e) {
-			System.out.println("Não foi possivel inserir a categoria. Erro: " + e.getMessage());
+			System.out.println("Não foi possivel inserir o produto. Erro: " + e.getMessage());
 		} finally {
 			try {
 				if (this.sessao.isOpen()) {
@@ -37,15 +38,15 @@ public class CategoriaDAO {
 	}
 	
 	//ATUALIZAR
-	public void atualizar(Categoria categoria) {
+	public void atualizar(Produto produto) {
 		try {
 			this.sessao = HibernateUtil.getSessionfactory().getCurrentSession();
 			this.transacao = this.sessao.beginTransaction();
-			this.sessao.update(categoria);
+			this.sessao.update(produto);
 			this.transacao.commit();
-			System.out.println("Categoria atualizada com sucesso.");
+			System.out.println("Produto atualizada com sucesso.");
 		} catch (HibernateException e) {
-			System.out.println("Não foi possível alterar a categoria. Erro: " + e.getMessage());
+			System.out.println("Não foi possível alterar o produto. Erro: " + e.getMessage());
 		} finally {
 			try {
 				if (this.sessao.isOpen()) {
@@ -58,15 +59,15 @@ public class CategoriaDAO {
 	}
 	
 	//EXCLUIR
-	public void excluir(Categoria categoria) {
+	public void excluir(Produto produto) {
 		try {
 			this.sessao = HibernateUtil.getSessionfactory().getCurrentSession();
 			this.transacao = this.sessao.beginTransaction();
-			this.sessao.delete(categoria);
+			this.sessao.delete(produto);
 			this.transacao.commit();
-			System.out.println("Categoria removida com sucesso.");
+			System.out.println("Produto removida com sucesso.");
 		} catch (HibernateException e) {
-			System.out.println("Não foi possível excluir a categoria. Erro: " + e.getMessage());
+			System.out.println("Não foi possível excluir o produto. Erro: " + e.getMessage());
 		} finally {
 			try {
 				if(this.sessao.isOpen()){
@@ -78,17 +79,19 @@ public class CategoriaDAO {
 		}
 	}
 	
-	//BUSCAR CATEGORIAS
-	public Categoria buscaCategoria(Integer codigo) {
+	//BUSCAR PRODUTOS
+	public Produto buscaProduto(Integer codigo) {
 		
-		Categoria categoria = null;
+		Produto produto = null;
+		
+		
 		
 		try {
 			this.sessao = HibernateUtil.getSessionfactory().getCurrentSession();
 			this.transacao = this.sessao.beginTransaction();
-			Criteria filtro = this.sessao.createCriteria(Categoria.class);
+			Criteria filtro = this.sessao.createCriteria(Produto.class);
 			filtro.add(Restrictions.eq("categoria", codigo));
-			categoria = (Categoria) filtro.uniqueResult();
+			produto = (Produto) filtro.uniqueResult();
 			this.transacao.commit();
 			System.out.println("Commitou a transação de busca.");
 		} catch (Throwable e) {
@@ -105,19 +108,19 @@ public class CategoriaDAO {
 			}
 		}
 		
-		return categoria;
+		return produto;
 	}
 	
 	//LISTAR
-	public List<Categoria> listar() {
+	public List<Produto> listar() {
 		
-		List<Categoria> categorias = null;
+		List<Produto> produtos = null;
 		
 		try {
 			this.sessao = HibernateUtil.getSessionfactory().getCurrentSession();
 			this.transacao = this.sessao.beginTransaction();
-			Criteria filtro = this.sessao.createCriteria(Categoria.class);
-			categorias = filtro.list();
+			Criteria filtro = this.sessao.createCriteria(Produto.class);
+			produtos = filtro.list();
 			this.transacao.commit();
 		} catch (Throwable e) {
 			if (this.transacao.isActive()) {
@@ -133,6 +136,7 @@ public class CategoriaDAO {
 			}
 		}
 		
-		return categorias;
+		return produtos;
 	}
+	
 }
