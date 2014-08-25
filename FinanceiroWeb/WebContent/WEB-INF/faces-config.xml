@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config
+    xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee 
+    					http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
+    version="2.2">
+	
+	<managed-bean>
+		<!-- nome pelo qual faremos referencia a classe 'UsuarioBean'.
+			 SUBSTITUI A UTILIZACAO DA 'annotation' @Managed-Bean -->
+		<managed-bean-name>usuarioBean</managed-bean-name>
+		<managed-bean-class>financeiro.web.UsuarioBean</managed-bean-class>
+		<!-- tempo de vida que terá a instancia da classe 'UsuarioBean',
+			 podendo ser:
+			 -application
+			 -session
+			 -request
+			 -none
+			 -view
+			 -custom -->
+		
+	<!-- SUBSTITUI A UTILIZACAO DA 'annotation' @RequestScoped -->
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
+	
+	<!-- MAPEAMENTO DE NAVEGAÇÃO ENTRE AS PAGINAS 
+		 O mapeamento entre paginas no JSF basicamente 
+		 define de onde vem e para onde vai uma requisicao.
+		 Cada 'navigation-rule' > 'from-view-id' define uma origem
+		 e cada 'navigation-case' define um destino-->
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>inicio</from-outcome>
+			<to-view-id>/index.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>usuario</from-outcome>
+			<to-view-id>/usuario.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/usuario.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>sucesso</from-outcome>
+			<to-view-id>/mostraUsuario.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/usuario.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{usuarioBean.salvar}</from-action>
+			<from-outcome>sucesso</from-outcome>
+			<to-view-id>/mostraUsuario.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/usuario.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>sucesso</from-outcome>
+			<to-view-id>#{usuarioBean.paginaDestino}</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<!-- MAPEAMENTO CONDICIONAL -->
+	<navigation-rule>
+		<from-view-id>/usuario.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>sucesso</from-outcome>
+			<if>#{usuarioBean.email ne ""}</if>
+			<to-view-id>/mostraUsuarioComEmail.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>sucesso</from-outcome>
+			<to-view-id>/mostraUsuario.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<!-- <managed-bean>
+		<managed-bean-name>usuarioBeanExemplo</managed-bean-name>
+		<managed-bean-class>financeiro.usuario.UsuarioBean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>	
+		<managed-property>
+			<property-name>origemCadastro</property-name>
+			<value>internet</value>
+		</managed-property>
+		<managed-property>
+			<property-name>relacaoConhecimento</property-name>
+			<value>#{comoConheceuOSiteMap}</value>
+		</managed-property>
+		<managed-property>
+			<property-name>comoConheceu</property-name>
+			<map-entries>
+			<map-entry>
+				<key>B</key>
+				<value>Blogs</value>
+			</map-entry>
+			<map-entry>
+				<key>R</key>
+				<value>Revistas</value>
+			</map-entry>
+			<map-entry>
+				<key>A</key>
+				<value>Amigos</value>
+			</map-entry>
+			<map-entry>
+				<key>F</key>
+				<value>Ferramenta de Busca</value>
+			</map-entry>
+		</map-entries>
+		</managed-property>
+		<managed-property>
+			<property-name>endereco</property-name>
+			<null-value/>
+		</managed-property>
+	</managed-bean> -->
+	
+	<!-- <managed-bean>
+		<managed-bean-name>comoConheceuOSiteMap</managed-bean-name>
+		<managed-bean-class>java.util.HashMap</managed-bean-class>
+		<managed-bean-scope>none</managed-bean-scope>
+		<map-entries>
+			<map-entry>
+				<key>B</key>
+				<value>Blogs</value>
+			</map-entry>
+			<map-entry>
+				<key>R</key>
+				<value>Revistas</value>
+			</map-entry>
+			<map-entry>
+				<key>A</key>
+				<value>Amigos</value>
+			</map-entry>
+			<map-entry>
+				<key>F</key>
+				<value>Ferramenta de Busca</value>
+			</map-entry>
+		</map-entries>
+	</managed-bean> -->
+	
+	<!-- <managed-bean>
+		<managed-bean-name>cidadesList</managed-bean-name>
+		<managed-bean-class>java.util.ArrayList</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+		<list-entries>
+			<value>Joinville</value>
+			<value>São Paulo</value>
+			<value>Rio de Janeiro</value>
+			<value>Brasília</value>
+		</list-entries>	
+	</managed-bean> -->
+	 
+</faces-config>
