@@ -87,6 +87,8 @@ public class CategoriaDAO {
 			this.sessao = HibernateUtil.getSessionfactory().getCurrentSession();
 			this.transacao = this.sessao.beginTransaction();
 			Criteria filtro = this.sessao.createCriteria(Categoria.class);
+			/*O METODO 'eq()' DA CLASSE 'Restrictions', TEM DOIS ARGUMENTOS:
+			  O PRIMEIRO o NOME DA PROPRIEDADE E, EM SEGUIDA, O VALOR QUE DEVE SER COMPARADO*/
 			filtro.add(Restrictions.eq("categoria", codigo));
 			categoria = (Categoria) filtro.uniqueResult();
 			this.transacao.commit();

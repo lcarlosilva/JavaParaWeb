@@ -33,6 +33,7 @@ public class Categoria implements Serializable {
 			   joinColumns={@JoinColumn(name="cod_categoria")},
 			   /*indica as colunas que fazer parteda chave primaria e chave estrangeira*/
 			   inverseJoinColumns={@JoinColumn(name="cod_produto")})
+	//HashSet, TEM COMO PECULIARIDADE SÓ PODER ARMAZENAR UM ELEMENTO SÓ DE UM DETERMINADO TIPO.
 	private Set<Produto> produtos = new HashSet<Produto>();
 
 	public Integer getCategoria() {
