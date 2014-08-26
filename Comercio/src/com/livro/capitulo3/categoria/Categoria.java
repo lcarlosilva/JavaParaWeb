@@ -29,8 +29,9 @@ public class Categoria implements Serializable {
 	protected String descricao;
 
 	@ManyToMany
-	@JoinTable(name="categoria_produto",
+	@JoinTable(name="categoria_produto",/*indica qual é a tabela de ligação, já que tenho um relacionamento, muitos-para-muitos*/
 			   joinColumns={@JoinColumn(name="cod_categoria")},
+			   /*indica as colunas que fazer parteda chave primaria e chave estrangeira*/
 			   inverseJoinColumns={@JoinColumn(name="cod_produto")})
 	private Set<Produto> produtos = new HashSet<Produto>();
 
