@@ -18,7 +18,8 @@
 			 -request
 			 -none
 			 -view
-			 -custom -->
+			 -custom 
+		-->
 		
 	<!-- SUBSTITUI A UTILIZACAO DA 'annotation' @RequestScoped -->
 		<managed-bean-scope>request</managed-bean-scope>

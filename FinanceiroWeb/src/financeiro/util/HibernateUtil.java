@@ -6,7 +6,7 @@ import org.hibernate.cfg.AnnotationConfiguration;
 
 /**
  *Classe que fica responsavel por 
- *instanciar a SessionFactory do Hibernate
+ *instanciar a SessionFactory<br> do Hibernate
  *e retorna-lá quando for solicitado 
  **/
 public class HibernateUtil {

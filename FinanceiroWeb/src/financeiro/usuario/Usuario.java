@@ -22,6 +22,7 @@ public class Usuario implements Serializable {
 	private String email;
 	
 	@NaturalId
+	//chave natural da tabela ou da entidade.
 	private String login;
 	private String senha;
 	private Date dataNacimento;
