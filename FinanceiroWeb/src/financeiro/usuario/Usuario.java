@@ -127,6 +127,7 @@ public class Usuario implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Usuario other = (Usuario) obj;
+		//TODO - pedir uma expolicação
 		if (aviso != other.aviso)
 			return false;
 		if (celular == null) {
