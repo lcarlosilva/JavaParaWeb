@@ -21,14 +21,13 @@ public class Usuario implements Serializable {
 	private String nome;
 	private String email;
 	
-	@NaturalId
-	//chave natural da tabela ou da entidade.
+	@NaturalId //chave natural da tabela ou da entidade.
 	private String login;
 	private String senha;
-	private Date dataNacimento;
+	private Date nascimento;
 	private String celular;
 	private String idioma;
-	private boolean aviso;
+	private boolean ativo;
 
 	public Integer getCodigo() {
 		return codigo;
@@ -70,12 +69,12 @@ public class Usuario implements Serializable {
 		this.senha = senha;
 	}
 
-	public Date getDataNacimento() {
-		return dataNacimento;
+	public Date getNascimento() {
+		return nascimento;
 	}
 
-	public void setDataNacimento(Date dataNacimento) {
-		this.dataNacimento = dataNacimento;
+	public void setNascimento(Date nascimento) {
+		this.nascimento = nascimento;
 	}
 
 	public String getCelular() {
@@ -94,22 +93,22 @@ public class Usuario implements Serializable {
 		this.idioma = idioma;
 	}
 
-	public boolean isAviso() {
-		return aviso;
+	public boolean isAtivo() {
+		return ativo;
 	}
 
-	public void setAviso(boolean aviso) {
-		this.aviso = aviso;
+	public void setAtivo(boolean ativo) {
+		this.ativo = ativo;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + (aviso ? 1231 : 1237);
+		result = prime * result + (ativo ? 1231 : 1237);
 		result = prime * result + ((celular == null) ? 0 : celular.hashCode());
 		result = prime * result + ((codigo == null) ? 0 : codigo.hashCode());
-		result = prime * result + ((dataNacimento == null) ? 0 : dataNacimento.hashCode());
+		result = prime * result + ((nascimento == null) ? 0 : nascimento.hashCode());
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + ((idioma == null) ? 0 : idioma.hashCode());
 		result = prime * result + ((login == null) ? 0 : login.hashCode());
@@ -128,7 +127,7 @@ public class Usuario implements Serializable {
 			return false;
 		Usuario other = (Usuario) obj;
 		//TODO - pedir uma expolicação
-		if (aviso != other.aviso)
+		if (ativo != other.ativo)
 			return false;
 		if (celular == null) {
 			if (other.celular != null)
@@ -140,10 +139,10 @@ public class Usuario implements Serializable {
 				return false;
 		} else if (!codigo.equals(other.codigo))
 			return false;
-		if (dataNacimento == null) {
-			if (other.dataNacimento != null)
+		if (nascimento == null) {
+			if (other.nascimento != null)
 				return false;
-		} else if (!dataNacimento.equals(other.dataNacimento))
+		} else if (!nascimento.equals(other.nascimento))
 			return false;
 		if (email == null) {
 			if (other.email != null)

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+					  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Cadastro de Usuário</title>
+</h:head>
+<h:body>
+
+	<h1>Cadastro de Usuário</h1>
+	
+	<div id="formulario">
+	
+		<h:form id="cadastro">
+		
+			<div id="mensagens">
+				<h:messages/>
+				<h:inputHidden value="#{usuarioBean.usuario.codigo}"/>
+				<h:inputHidden value="#{usuarioBean.usuario.ativo}"/>
+			</div>
+			
+			<div id="areaCampos">
+			
+				<h:panelGrid columns="2">
+				
+					<div id="areaNome">			
+						<!-- NOME -->
+						<h:outputLabel value="Nome:" for="nome"/>
+						<h:inputText id="nome" label="Nome" value="#{usuarioBean.usuario.nome}" size="30"
+									 maxlength="30" required="true" requiredMessage="Você não tem nome?">
+							<f:validateLength minimum="10" maximum="30"/>
+						</h:inputText>
+					</div>
+					
+					<div id="areaNascimento">
+						<!-- DATA NASCIMENTO -->
+						<h:outputLabel value="Data Nascimento:" for="data"/>
+						<h:inputText id="data" label="Data Nascimento" value="#{usuarioBean.usuario.nascimento}"
+									 size="10" maxlength="10" required="true">
+							<f:convertDateTime dateStyle="medium"/>		 
+						</h:inputText>
+					</div>
+					
+					<div id="areaCelular">
+						<!-- CELULAR -->
+						<h:outputLabel value="Celular:" for="celular"/>
+						<h:inputText id="celular" label="Celular" value="#{usuarioBean.usuario.celular}" size="10"/>
+					</div>
+					
+					<div id="areaMail">
+						<!-- E-MAIL -->
+						<h:outputLabel value="e-Mail" for="email"/>
+						<h:panelGroup>
+							<h:inputText id="email"
+										 label="e-Mail"
+										 value="#{usuarioBean.usuario.email}"
+										 size="50" maxlength="50" required="true"
+										 validatorMessage="e-mail inválido">
+								<f:validateRegex pattern="[a-zA-Z0-9\-\_\.]+@[a-zA-Z0-9-\-\_\.]+"/>
+							</h:inputText>
+							<h:message for="email"/>
+						</h:panelGroup>
+					</div>
+					
+					<div id="areaIdioma">
+						<!-- IDIOMA -->
+						<h:outputLabel value="Idioma" for="idioma"/>
+						<h:selectOneMenu id="idioma" value="#{usuarioBean}">
+							<f:selectItem itemValue="pt_BR" itemLabel="Português"/>
+							<f:selectItem itemValue="en_US" itemLabel="English"/>
+							<f:selectItem itemValue="es_ES" itemLabel="Espanhol"/>
+						</h:selectOneMenu>
+					</div>
+					
+					<div id="areaLogin">
+						<!-- LOGIN -->
+						<h:outputLabel value="Login:" for="login"/>
+						<h:inputText id="login"
+									 label="Login"
+									 value="#{usuarioBean.usuario.login}"
+									 size="15"
+									 maxlength="15"
+									 required="true"
+									 validatorMessage="Login deve ter no minimo 5 e no maximo 15 caracteres e só pode ter os simbolos'.' e '_'.">
+							<f:validateRegex pattern="([a-z]|[0-9]|[.]|[_]){5,15}"/>
+						</h:inputText>
+					</div>
+					
+					<div id="areaSenha">
+						<!-- SENHA -->
+						<h:outputLabel value="Senha:" for="senha"/>
+						<h:inputSecret id="senha" label="Senha" value="#{usuarioBean.usuario.senha}" size="10"
+							maxlength="10" required="true" redisplay="true"/>
+					</div>
+					
+					<div id="areaConfirmarSenha">
+						<!-- CONFIRMA SENHA -->
+						<h:outputLabel value="Confirma Senha:" for="confirmasenha"/>
+						<h:inputSecret id="confirmasenha" label="Confirma Senha" value="#{usuarioBean.confirmarSenha}"
+							size="10" maxlength="10" required="true" redisplay="true"/>
+					</div>	
+					
+				</h:panelGrid>
+				
+			</div>
+			
+			<!-- AREA BOTOES -->
+			<div id="areaBotoes">
+				<h:commandButton action="#{usuarioBean.salvar}" value="Salvar"/>
+			</div>
+			
+		</h:form>
+	</div>
+</h:body>
+</html>
