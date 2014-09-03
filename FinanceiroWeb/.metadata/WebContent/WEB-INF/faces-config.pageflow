@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf14077562612480" configfile="/FinanceiroWeb/WebContent/WEB-INF/faces-config.xml">
-  <nodes xsi:type="pageflow:PFPage" name="*" x="97" y="456" id="pf14079014915780" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf14079014915781 pf14079014915782" path="*"/>
+  <nodes xsi:type="pageflow:PFPage" name="*" x="97" y="456" id="pf14079014915780" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf14079014915781 pf14097559264480" path="*"/>
   <nodes xsi:type="pageflow:PFPage" name="index.xhtml" x="37" y="245" id="pf14079014915793" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf14079014915781" path="/index.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="usuario.xhtml" x="493" y="516" id="pf14079014915794" referenceLink="//@navigationRule.4/@fromViewId|" outlinks="pf14079014915795 pf14079015820518 pf140790360033611 pf140790407139613 pf140790407139614" inlinks="pf14079014915782" path="/usuario.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="usuario.xhtml" x="493" y="516" id="pf14079014915794" referenceLink="//@navigationRule.4/@fromViewId|" outlinks="pf14079014915795 pf14079015820518 pf140790360033611 pf140790407139613 pf140790407139614" path="/usuario.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="mostraUsuario.xhtml" x="108" y="120" id="pf14079014915796" referenceLink="//@navigationRule.4/@navigationCase.1/@toViewId|" inlinks="pf14079014915795 pf14079015820518 pf140790407139614" path="/mostraUsuario.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="#{usuarioBean.paginaDestino}" x="324" y="108" id="pf140790360033612" referenceLink="//@navigationRule.3/@navigationCase.0/@toViewId|" inlinks="pf140790360033611" path="#{usuarioBean.paginaDestino}"/>
   <nodes xsi:type="pageflow:PFPage" name="mostraUsuarioComEmail.xhtml" x="648" y="245" id="pf140790407139615" referenceLink="//@navigationRule.4/@navigationCase.0/@toViewId|" inlinks="pf140790407139613" path="/mostraUsuarioComEmail.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="publico/usuario.xhtml" id="pf14097559264491" referenceLink="//@navigationRule.0/@navigationCase.1/@toViewId|" inlinks="pf14097559264480" path="/publico/usuario.xhtml"/>
   <links id="pf14079014915781" target="pf14079014915793" source="pf14079014915780" outcome="inicio"/>
-  <links id="pf14079014915782" target="pf14079014915794" source="pf14079014915780" outcome="usuario"/>
   <links id="pf14079014915795" target="pf14079014915796" source="pf14079014915794" outcome="sucesso">
     <bendPoints d1Width="-262" d1Height="-185" d2Width="104" d2Height="211"/>
   </links>
@@ -19,4 +19,5 @@
   <links id="pf140790407139614" target="pf14079014915796" source="pf14079014915794" outcome="sucesso">
     <bendPoints d1Width="-368" d1Height="-151" d2Width="-2" d2Height="245"/>
   </links>
+  <links id="pf14097559264480" target="pf14097559264491" source="pf14079014915780" outcome="usuario"/>
 </pageflow:Pageflow>
