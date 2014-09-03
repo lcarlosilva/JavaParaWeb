@@ -16,15 +16,19 @@
 	
 		<h:form id="cadastro">
 		
+			<!-- MENSAGENS  -->
 			<div id="mensagens">
 				<h:messages/>
+			</div>
+			
+			<!-- INPUT HIDDEN -->
+			<div id="inputHidden">
 				<h:inputHidden value="#{usuarioBean.usuario.codigo}"/>
 				<h:inputHidden value="#{usuarioBean.usuario.ativo}"/>
 			</div>
-			
 			<div id="areaCampos">
 			
-				<h:panelGrid columns="2">
+				<h:panelGrid columns="3">
 				
 					<div id="areaNome">			
 						<!-- NOME -->
@@ -52,7 +56,7 @@
 					
 					<div id="areaMail">
 						<!-- E-MAIL -->
-						<h:outputLabel value="e-Mail" for="email"/>
+						<h:outputLabel value="e-Mail:" for="email"/>
 						<h:panelGroup>
 							<h:inputText id="email"
 										 label="e-Mail"
@@ -67,8 +71,8 @@
 					
 					<div id="areaIdioma">
 						<!-- IDIOMA -->
-						<h:outputLabel value="Idioma" for="idioma"/>
-						<h:selectOneMenu id="idioma" value="#{usuarioBean}">
+						<h:outputLabel value="Idioma:" for="idioma"/>
+						<h:selectOneMenu id="idioma" value="#{usuarioBean.usuario.idioma}">
 							<f:selectItem itemValue="pt_BR" itemLabel="Português"/>
 							<f:selectItem itemValue="en_US" itemLabel="English"/>
 							<f:selectItem itemValue="es_ES" itemLabel="Espanhol"/>
