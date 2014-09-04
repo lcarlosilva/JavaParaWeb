@@ -22,6 +22,10 @@ public class UsuarioBean {
 	}
 	
 	public String salvar() {
+		//FacesContext será utilizado para 
+		//adicionar as mensagens de erro
+		//que possam a vir a ser criadas, 
+		//oque acontece na condional verificação de igualdade das senhas.
 		FacesContext context = FacesContext.getCurrentInstance();
 		
 		String senha = this.usuario.getSenha();
